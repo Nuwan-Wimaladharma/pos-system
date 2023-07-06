@@ -15,7 +15,7 @@ import java.util.Optional;
 import static lk.ijse.dep10.pos.dao.util.Mappers.CUSTOMER_ROW_MAPPER;
 
 @Repository
-public class CustomerDAOImpl implements CustomerDAO {
+public class    CustomerDAOImpl implements CustomerDAO {
 
     private final JdbcTemplate jdbcTemplate;
 

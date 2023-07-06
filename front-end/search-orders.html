@@ -12,7 +12,7 @@
     <script defer src="node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
     <script defer src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="module" src="js/main.js"></script>
-    <script type="module" src="js/home.js"></script>
+    <script type="module" src="js/search-orders.js"></script>
 </head>
 
 <body class="container-xl gx-0 border-end border-start">
@@ -71,8 +71,42 @@
         </ul>
     </div>
 </nav>
-<main>
 
+
+<main>
+    <section class="d-flex justify-content-between border-bottom p-2">
+        <h2 class="m-0 align-self-center">Search Orders</h2>
+    </section>
+    <section class="p-2">
+        <input id="txt-search" class="form-control text-center" type="text" placeholder="Search Orders">
+    </section>
+    <section class="p-2">
+        <table id="tbl-search-orders" class="table table-hover table-bordered">
+            <thead class="table-light">
+            <tr>
+                <th class="text-center">Order Id</th>
+                <th class="contact text-center">Order Date</th>
+                <th class="contact text-center">Customer Id</th>
+                <th class="contact text-center">Customer Name</th>
+                <th class="contact text-center">Order Total(LKR)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="contact text-center">OD001</td>
+                <td class="contact text-center">2023-06-17 10:56:55</td>
+                <td class="contact text-center">C001</td>
+                <td class="contact text-center">Nuwan</td>
+                <td class="contact text-center">875</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td class="text-center" colspan="5">No order records are found!</td>
+            </tr>
+            </tfoot>
+        </table>
+    </section>
 </main>
 </body>
 </html>

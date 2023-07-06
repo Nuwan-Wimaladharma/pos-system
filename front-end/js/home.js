@@ -89,7 +89,7 @@ function countOrders(){
 
 let xValues = ["", "", "", "", "", "", ""];
 let yValues = [0, 0, 0, 0, 0, 0, 0];
-let barColors = ["red", "green","blue","orange","brown","pink","gray"];
+let barColors = ["red", "green","blue","orange","brown","yellow","purple"];
 
 function getAllOrders(){
     const xhr = new XMLHttpRequest();
@@ -98,30 +98,30 @@ function getAllOrders(){
         if (xhr.readyState === 4){
             if (xhr.status === 200){
                 const orderList = JSON.parse(xhr.responseText);
+                console.log(orderList);
                 let j = 6;
                 let a = orderList.length - 1;
                 let i = orderList.length - 1;
                 for (i; i >= 0;) {
+                    xValues[j] = ((orderList[i].orderDate).toString().split(' '))[0];
                     let totalSaleOfaDay = +(orderList[i].orderTotal);
                     if (i > 0){
                         let latestDate = LocalDate.parse(((orderList[i].orderDate).toString().split(' '))[0]);
                         let previousDate = LocalDate.parse(((orderList[i-1].orderDate).toString().split(' '))[0]);
-                        console.log(i);
                         while ((latestDate.year() === previousDate.year()) && (latestDate.month() === previousDate.month()) && (latestDate.dayOfMonth() === previousDate.dayOfMonth())){
                             totalSaleOfaDay += +(orderList[i-1].orderTotal);
                             i--;
+                            if (i === 0) break;
                             latestDate = LocalDate.parse(((orderList[i].orderDate).toString().split(' '))[0]);
                             previousDate = LocalDate.parse(((orderList[i-1].orderDate).toString().split(' '))[0]);
                         }
-                        console.log(yValues);
-                        i--;
                     }
                     yValues[j] = +totalSaleOfaDay;
-                    xValues[j] = ((orderList[i].orderDate).toString().split(' '))[0];
                     j--;
                     if (j < 0){
                         break;
                     }
+                    i--;
                 }
                 new Chart("my-graph", {
                     type: "bar",
